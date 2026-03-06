@@ -23,6 +23,12 @@ benchmarks:
         score: "96.4%"
       - model: gpt-5.2
         score: "95.8%"
+      - model: gemini-3.1-pro
+        score: "~91%"
+        note: "est. based on Gemini 3.1 Pro Preview technical report"
+      - model: o3
+        score: "~91%"
+        note: "est.; o3 focuses on reasoning, not pure HumanEval optimization"
       - model: deepseek-chat
         score: "91.2%"
     notes: "Pass@1 metric. SWE-bench is harder and more realistic for real-world coding."
@@ -48,6 +54,12 @@ benchmarks:
         score: "72.5%"
       - model: gpt-5.2
         score: "69.1%"
+      - model: o3
+        score: "~67%"
+        note: "est.; o3 excels at reasoning steps but Opus leads on real-world engineering"
+      - model: gemini-3.1-pro
+        score: "~59%"
+        note: "est.; Gemini leads in long-context but lags on multi-file code tasks"
       - model: claude-sonnet-4-6
         score: "61.3%"
     notes: "Gold standard for agentic coding tasks. Prefer this over HumanEval for serious engineering work."
@@ -72,6 +84,9 @@ benchmarks:
         score: "87.7%"
       - model: claude-opus-4-6
         score: "83.2%"
+      - model: gemini-3.1-pro
+        score: "~80%"
+        note: "est. based on Gemini 3.1 Pro Preview release; exact GPQA score not yet published"
       - model: claude-sonnet-4-6
         score: "74.1%"
     notes: "Human expert baseline is ~69%. Models exceeding this are genuinely impressive."
@@ -98,6 +113,9 @@ benchmarks:
         score: "95.1%"
       - model: gpt-5.2
         score: "93.4%"
+      - model: gemini-3.1-pro
+        score: "~93%"
+        note: "est.; Gemini 3.1 Pro strong on math, exact score from tech report pending public release"
 
   - id: mmlu
     name: MMLU
@@ -118,6 +136,9 @@ benchmarks:
         score: "91.8%"
       - model: gpt-5.2
         score: "90.9%"
+      - model: o3
+        score: "~91%"
+        note: "est.; o3 prioritizes reasoning over broad knowledge, MMLU not officially published"
       - model: gemini-3.1-pro
         score: "89.4%"
 
@@ -141,6 +162,9 @@ benchmarks:
         score: "99.1% @ 1M tokens"
       - model: claude-opus-4-6
         score: "98.4% @ 200K tokens"
+      - model: o3
+        score: "~97% @ 200K tokens"
+        note: "est.; 200K context window, strong retrieval but smaller window than Gemini"
     notes: "Context window size matters as much as score. Gemini leads on very long contexts."
 
   - id: mt-bench
@@ -160,8 +184,14 @@ benchmarks:
         score: "9.6/10"
       - model: gpt-5.2
         score: "9.5/10"
+      - model: gemini-3.1-pro
+        score: "~9.3/10"
+        note: "est.; Gemini strong at dialogue but MT-Bench score not officially published for 3.1"
       - model: claude-sonnet-4-6
         score: "9.3/10"
+      - model: o3
+        score: "~9.0/10"
+        note: "est.; o3 optimized for reasoning, not dialogue; tends to be verbose in conversation"
 
   - id: bbh
     name: BBH
@@ -180,3 +210,6 @@ benchmarks:
         score: "92.4%"
       - model: claude-opus-4-6
         score: "89.7%"
+      - model: gemini-3.1-pro
+        score: "~88%"
+        note: "est.; Gemini 3.1 strong on complex reasoning, exact BBH score not yet published"
