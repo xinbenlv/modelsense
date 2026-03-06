@@ -58,14 +58,19 @@ Benchmark data is updated manually with each model release.
 
 ## Install
 
-```bash
-# Add to your OpenClaw skills path
-ln -s /path/to/modelsense ~/.agents/skills/modelsense
-```
-
-Or via ClawHub (coming soon):
+Via ClawHub:
 ```bash
 clawhub install modelsense
+```
+
+Via skills.sh:
+```bash
+npx skills add xinbenlv/modelsense
+```
+
+Or manually:
+```bash
+ln -s /path/to/modelsense ~/.agents/skills/modelsense
 ```
 
 ## License

@@ -1,0 +1,25 @@
+{
+  "name": "modelsense",
+  "version": "1.0.0",
+  "description": "The right model for the right job — recommends the best LLM for any task",
+  "private": true,
+  "scripts": {
+    "publish:clawhub": "clawhub publish . --slug modelsense --name 'ModelSense' --version $npm_package_version --changelog \"Release v$npm_package_version\" --tags 'models,routing,benchmarks,productivity'",
+    "publish:skill-dot-sh": "git push origin main",
+    "publish": "npm run publish:clawhub && npm run publish:skill-dot-sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xinbenlv/modelsense"
+  },
+  "keywords": [
+    "modelsense",
+    "llm",
+    "model-selection",
+    "benchmarks",
+    "openclaw",
+    "skill"
+  ],
+  "author": "xinbenlv",
+  "license": "MIT"
+}
