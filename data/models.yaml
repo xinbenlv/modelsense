@@ -243,6 +243,6 @@ models:
   - real-time web knowledge (X/Twitter data)
   - good math for price point
 _meta:
-  last_auto_update: '2026-03-16'
+  last_auto_update: '2026-03-23'
   source: openrouter.ai/api/v1/models
   models_updated: 6
