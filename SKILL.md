@@ -73,18 +73,40 @@ Check the user's available providers:
 
 ### Step 5 — Output the Recommendation
 
-Format:
-```
-🎯 Recommended: <model>
-⚡ Effort: <level>
-📊 Why: <1-2 sentence benchmark-grounded rationale>
-🔧 Special: <thinking on? function calling? etc.>
-💰 Cost estimate: <rough $/M or relative>
+Use markdown headers, bold, and tables for clean rendering in terminal UIs (Claude Code, Codex CLI, Cursor). No emojis.
 
-Alternatives:
-  - <model B> — if you want faster/cheaper
-  - <model C> — if you want higher quality
+Format:
+
+```markdown
+### Recommendation
+
+**Model:** `<model>`
+**Effort:** `<level>`
+**Why:** <1-2 sentence benchmark-grounded rationale>
+**Settings:** <thinking level, function calling, etc.>
+**Cost:** <rough $/M or relative>
+
+#### Key Benchmarks
+
+| Benchmark | Recommended | Score | Runner-up | Score |
+|-----------|-------------|-------|-----------|-------|
+| <name>    | <model>     | <score> | <model> | <score> |
+| <name>    | <model>     | <score> | <model> | <score> |
+
+> Show 2-4 most relevant benchmarks from `data/benchmarks.yaml` for this task.
+
+#### Alternatives
+
+| Model | Trade-off |
+|-------|-----------|
+| `<model B>` | Faster / cheaper |
+| `<model C>` | Higher quality |
 ```
+
+**IMPORTANT**: Always include the "Key Benchmarks" table. Select the 2-4 benchmarks
+from `data/benchmarks.yaml` most relevant to the user's task domain (see the Benchmark Matching
+table in Step 2). Show the actual scores for the recommended model and at least one competitor.
+This makes the recommendation transparent and verifiable.
 
 ## Auto-Switch Behaviors
 
@@ -96,7 +118,7 @@ If user confirms or says "yes switch" / "apply it":
 ```python
 session_status(model="<provider/model>")
 ```
-Notify user: "✅ Switched to X for this session. Run `/model default` to reset."
+Notify user: "Switched to X for this session. Run `/model default` to reset."
 
 ### Option C: Delegate task to best model
 If user says "just do it with the best model":
@@ -119,12 +141,21 @@ sessions_spawn(
 → Domain: code + security + long-form
 → Benchmarks: SWE-bench, HumanEval
 → Recommendation: `claude-opus-4-6` with `thinking=high`, effort=`deep`
+→ Key benchmarks:
+  - SWE-bench Verified: Opus 72.5% · GPT-5.2 69.1%
+  - HumanEval: Opus 96.4% · GPT-5.2 95.8%
 
 **User**: "Quick summary of this Slack thread"
 → Domain: dialogue, short
 → Recommendation: `claude-haiku-4-5` or `gemini-flash`, effort=`quick`
+→ Key benchmarks:
+  - MT-Bench: Opus 9.6/10 · Sonnet 9.3/10 (Haiku fast enough for summaries)
 
 **User**: "Prove this mathematical conjecture"
 → Domain: math, research-grade
 → Benchmarks: MATH, AIME, GPQA
 → Recommendation: `o3` or `claude-opus-4-6` with `thinking=high`, effort=`research`
+→ Key benchmarks:
+  - MATH: o3 97.9% · Opus 95.1%
+  - GPQA Diamond: o3 87.7% · Opus 83.2%
+  - BBH: o3 92.4% · Opus 89.7%
