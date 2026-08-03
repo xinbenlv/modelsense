@@ -206,8 +206,8 @@ models:
   provider: deepseek
   aliases:
   - deepseek
-  cost_input_per_m: 0.2002
-  cost_output_per_m: 0.8001
+  cost_input_per_m: 0.2574
+  cost_output_per_m: 1.0287
   context_window: 163840
   supports_thinking: false
   supports_tools: true
@@ -243,6 +243,6 @@ models:
   - real-time web knowledge (X/Twitter data)
   - good math for price point
 _meta:
-  last_auto_update: '2026-07-27'
+  last_auto_update: '2026-08-03'
   source: openrouter.ai/api/v1/models
   models_updated: 6
